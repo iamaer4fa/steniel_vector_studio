@@ -7,7 +7,7 @@ import {
   RectangleObject,
   Subpath,
   VectorObject,
-} from '../types/corel';
+} from '../types/vectordraw';
 
 export function generateId(prefix = 'obj'): string {
   return `${prefix}_${Math.random().toString(36).substring(2, 9)}`;
@@ -77,7 +77,7 @@ export function rectangleToCurve(rect: RectangleObject): CurveObject {
     );
   } else {
     // Rounded rectangle using cubic bézier segments
-    // CorelDRAW style kappa constant for rounded corners
+    // VectorDraw style kappa constant for rounded corners
     const k = 0.5522847498;
 
     // Top edge & TR corner

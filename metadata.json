@@ -1,6 +1,6 @@
 {
-  "name": "CorelDRAW Vector Studio",
-  "description": "Professional vector graphic editor featuring CorelDRAW interface, curve manipulation, Bézier node editing, and native keyboard shortcuts.",
+  "name": "VectorDraw Studio",
+  "description": "Professional vector graphic editor featuring VectorDraw interface, curve manipulation, Bézier node editing, and native keyboard shortcuts.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

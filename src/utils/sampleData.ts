@@ -1,4 +1,4 @@
-import { CurveObject, PageConfig, VectorObject } from '../types/corel';
+import { CurveObject, PageConfig, VectorObject } from '../types/vectordraw';
 import { generateId } from './bezier';
 
 export const DEFAULT_PAGE_CONFIG: PageConfig = {
@@ -19,11 +19,11 @@ export const PAGE_PRESETS: { [key: string]: { width: number; height: number; uni
 };
 
 /**
- * High-quality CorelDRAW vector sample illustration
+ * High-quality VectorDraw vector sample illustration
  * Features distinct curve shapes with cusp, smooth, and symmetrical nodes
  */
 export function getSampleArtwork(): VectorObject[] {
-  // 1. Stylized Corel Balloon / Vector Motif (Iconic Corel hot air balloon / ribbon motif)
+  // 1. Stylized VectorDraw Balloon / Vector Motif
   const balloonBody: CurveObject = {
     id: generateId('curve'),
     name: 'Balloon Dome',
@@ -286,9 +286,9 @@ export function getSampleArtwork(): VectorObject[] {
 }
 
 /**
- * CorelDRAW Default CMYK / RGB 40-color palette
+ * VectorDraw Default CMYK / RGB 40-color palette
  */
-export const COREL_PALETTE: { name: string; hex: string }[] = [
+export const VECTORDRAW_PALETTE: { name: string; hex: string }[] = [
   { name: 'None (No Fill/Stroke)', hex: 'none' },
   { name: 'Black', hex: '#000000' },
   { name: '90% Black', hex: '#1C1C1C' },

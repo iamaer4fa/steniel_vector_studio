@@ -13,7 +13,7 @@ import {
   Paintbrush,
   Pipette,
 } from 'lucide-react';
-import { ToolType } from '../types/corel';
+import { ToolType } from '../types/vectordraw';
 
 interface ToolboxProps {
   activeTool: ToolType;
@@ -130,7 +130,7 @@ export const Toolbox: React.FC<ToolboxProps> = ({
               title={`${tool.name} (${tool.shortcut})`}
             >
               {tool.icon}
-              {/* Corel tiny corner arrow for flyout indicator */}
+              {/* VectorDraw tiny corner arrow for flyout indicator */}
               <span className="absolute bottom-0.5 right-0.5 w-0 h-0 border-b-3 border-r-3 border-t-0 border-l-0 border-b-neutral-400 border-r-neutral-400 dark:border-b-neutral-600 dark:border-r-neutral-600" />
             </button>
 

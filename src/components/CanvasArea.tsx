@@ -10,7 +10,7 @@ import {
   ToolType,
   VectorObject,
   ViewportState,
-} from '../types/corel';
+} from '../types/vectordraw';
 import {
   distance,
   generateId,
@@ -74,7 +74,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState<Point>({ x: 0, y: 0 });
 
-  // Transform mode for Pick tool: 'resize' vs 'rotate' (second click toggles rotate/skew in CorelDRAW)
+  // Transform mode for Pick tool: 'resize' vs 'rotate' (second click toggles rotate/skew in VectorDraw)
   const [transformMode, setTransformMode] = useState<'resize' | 'rotate'>('resize');
 
   // Object drag state
@@ -545,7 +545,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
     });
   };
 
-  // Double click on node deletes it (CorelDRAW shortcut)
+  // Double click on node deletes it (VectorDraw shortcut)
   const handleNodeDoubleClick = (
     e: React.MouseEvent,
     curve: CurveObject,
@@ -671,10 +671,10 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
             strokeWidth={1 / viewport.zoom}
           />
 
-          {/* Corel Grid (subtle dot grid inside page) */}
+          {/* VectorDraw Grid (subtle dot grid inside page) */}
           <defs>
             <pattern
-              id="corel-grid"
+              id="vectordraw-grid"
               width="20"
               height="20"
               patternUnits="userSpaceOnUse"
@@ -692,7 +692,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
             y={0}
             width={pageConfig.width}
             height={pageConfig.height}
-            fill="url(#corel-grid)"
+            fill="url(#vectordraw-grid)"
             pointerEvents="none"
           />
 
@@ -714,7 +714,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
                   if (activeTool === 'pick') {
                     e.stopPropagation();
                     if (isSelected) {
-                      // Second click in CorelDRAW toggles between resize and rotation handles!
+                      // Second click in VectorDraw toggles between resize and rotation handles!
                       setTransformMode((prev) => (prev === 'resize' ? 'rotate' : 'resize'));
                     } else {
                       onSelectObject(obj.id);
@@ -881,7 +881,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
                 strokeDasharray="3,3"
               />
 
-              {/* Center 'X' pivot marker (CorelDRAW signature) */}
+              {/* Center 'X' pivot marker (VectorDraw signature) */}
               <g
                 transform={`translate(${selectedBBox.x + selectedBBox.width / 2}, ${
                   selectedBBox.y + selectedBBox.height / 2
@@ -977,7 +977,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
                           });
                         }}
                       >
-                        <title>Drag to Rotate (CorelDRAW)</title>
+                        <title>Drag to Rotate (VectorDraw)</title>
                       </circle>
                     );
                   })}
@@ -1112,7 +1112,7 @@ export const CanvasArea: React.FC<CanvasAreaProps> = ({
                             </>
                           )}
 
-                          {/* Node Anchor Point (Square in CorelDRAW) */}
+                          {/* Node Anchor Point (Square in VectorDraw) */}
                           <rect
                             x={node.x - nodeSize / 2}
                             y={node.y - nodeSize / 2}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { COREL_PALETTE } from '../utils/sampleData';
+import { VECTORDRAW_PALETTE } from '../utils/sampleData';
 import { Palette, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface ColorPaletteProps {
@@ -41,7 +41,7 @@ export const ColorPalette: React.FC<ColorPaletteProps> = ({
 
       {/* Vertical Swatch Strip */}
       <div className="flex-1 w-full flex flex-col items-center gap-0.5 overflow-y-auto overflow-x-hidden no-scrollbar px-1">
-        {COREL_PALETTE.map((color, idx) => {
+        {VECTORDRAW_PALETTE.map((color, idx) => {
           const isNone = color.hex === 'none';
           const isCurrentFill = currentFill.toLowerCase() === color.hex.toLowerCase();
           const isCurrentOutline = currentOutline.toLowerCase() === color.hex.toLowerCase();

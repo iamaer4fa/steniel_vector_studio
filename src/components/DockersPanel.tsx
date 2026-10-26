@@ -23,7 +23,7 @@ import {
   PageConfig,
   SelectedNodeRef,
   VectorObject,
-} from '../types/corel';
+} from '../types/vectordraw';
 
 interface DockersPanelProps {
   objects: VectorObject[];
@@ -338,7 +338,7 @@ export const DockersPanel: React.FC<DockersPanelProps> = ({
           <div className="space-y-4">
             <div className="space-y-2">
               <div className="text-[11px] font-semibold text-neutral-500 uppercase">
-                CorelDRAW Align Shortcuts
+                VectorDraw Align Shortcuts
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button

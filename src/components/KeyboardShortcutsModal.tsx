@@ -94,8 +94,8 @@ export const KeyboardShortcutsModal: React.FC<KeyboardShortcutsModalProps> = ({
               <Keyboard className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-base leading-tight">CorelDRAW Keyboard Shortcuts</h3>
-              <p className="text-xs text-neutral-500">Native key bindings matching CorelDRAW suite</p>
+              <h3 className="font-bold text-base leading-tight">VectorDraw Keyboard Shortcuts</h3>
+              <p className="text-xs text-neutral-500">Native key bindings matching VectorDraw suite</p>
             </div>
           </div>
           <button

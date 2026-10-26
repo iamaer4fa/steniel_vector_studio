@@ -1,4 +1,4 @@
-import { PageConfig, VectorObject } from '../types/corel';
+import { PageConfig, VectorObject } from '../types/vectordraw';
 import { subpathsToSvgPath } from './bezier';
 
 export function exportToSvgString(objects: VectorObject[], pageConfig: PageConfig): string {
@@ -9,7 +9,7 @@ export function exportToSvgString(objects: VectorObject[], pageConfig: PageConfi
   svg += `  <style>\n`;
   svg += `    .vector-obj { vector-effect: non-scaling-stroke; }\n`;
   svg += `  </style>\n`;
-  svg += `  <!-- Created with CorelDRAW Vector Studio -->\n`;
+  svg += `  <!-- Created with VectorDraw Studio -->\n`;
 
   for (const obj of objects) {
     if (!obj.visible) continue;
@@ -81,7 +81,7 @@ export function exportToPng(objects: VectorObject[], pageConfig: PageConfig) {
       const pngUrl = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = pngUrl;
-      a.download = 'coreldraw-export.png';
+      a.download = 'vectordraw-export.png';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

@@ -199,7 +199,7 @@ export const StandardToolbar: React.FC<StandardToolbarProps> = ({
 
       <div className="w-[1px] h-4 bg-neutral-300 dark:bg-neutral-700 mx-1" />
 
-      {/* Quick CorelDRAW Alignment & Snapping */}
+      {/* Quick VectorDraw Alignment & Snapping */}
       <button
         onClick={onCenterToPage}
         disabled={!hasSelection}
@@ -220,7 +220,7 @@ export const StandardToolbar: React.FC<StandardToolbarProps> = ({
 
       <div className="flex-1" />
 
-      {/* Right toggle for Corel Dockers */}
+      {/* Right toggle for VectorDraw Dockers */}
       <button
         onClick={toggleDocker}
         className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium transition-colors ${

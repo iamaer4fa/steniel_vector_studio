@@ -9,7 +9,7 @@ import {
   ToolType,
   VectorObject,
   ViewportState,
-} from './types/corel';
+} from './types/vectordraw';
 import {
   convertObjectToCurves,
   distance,
@@ -174,7 +174,7 @@ export default function App() {
     pushHistory(newObjects, 'Delete Object');
   };
 
-  // Convert to Curves (Ctrl+Q) - CorelDRAW staple
+  // Convert to Curves (Ctrl+Q) - VectorDraw staple
   const handleConvertToCurves = () => {
     if (!selectedObject) return;
     if (selectedObject.type === 'curve') return;
@@ -182,7 +182,7 @@ export default function App() {
     const curveObj = convertObjectToCurves(selectedObject);
     const newObjects = objects.map((o) => (o.id === curveObj.id ? curveObj : o));
     pushHistory(newObjects, 'Convert to Curves (Ctrl+Q)');
-    // Automatically switch to Shape Tool (F10) like CorelDRAW!
+    // Automatically switch to Shape Tool (F10) like VectorDraw!
     setActiveTool('shape');
     setSelectedNodeRef({
       objectId: curveObj.id,
@@ -299,7 +299,7 @@ export default function App() {
     pushHistory(newObjects, 'Send to Back of Page (Shift+PgDn)');
   };
 
-  // Alignments (CorelDRAW Single-Key Shortcuts: P, L, R, T, B, C, E)
+  // Alignments (VectorDraw Single-Key Shortcuts: P, L, R, T, B, C, E)
   const handleAlign = (type: 'left' | 'right' | 'top' | 'bottom' | 'centerX' | 'centerY' | 'page') => {
     if (!selectedObject) return;
     const bbox = getObjectBoundingBox(selectedObject);
@@ -701,7 +701,7 @@ export default function App() {
   // Export SVG
   const handleExportSvg = () => {
     const svg = exportToSvgString(objects, pageConfig);
-    downloadFile(svg, 'coreldraw-artwork.svg', 'image/svg+xml');
+    downloadFile(svg, 'vectordraw-artwork.svg', 'image/svg+xml');
   };
 
   // Export PNG
@@ -712,7 +712,7 @@ export default function App() {
   // Save Project JSON
   const handleSaveProject = () => {
     const data = JSON.stringify({ pageConfig, objects }, null, 2);
-    downloadFile(data, 'coreldraw-project.cdr.json', 'application/json');
+    downloadFile(data, 'vectordraw-project.vdr.json', 'application/json');
   };
 
   // Reset to Sample Art
@@ -724,7 +724,7 @@ export default function App() {
     handleZoomToPage();
   };
 
-  // Global CorelDRAW Keyboard Shortcuts Listener
+  // Global VectorDraw Keyboard Shortcuts Listener
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // If typing in input, ignore global tool shortcuts
@@ -733,7 +733,7 @@ export default function App() {
         return;
       }
 
-      // Spacebar: Toggle Pick Tool (CorelDRAW standard)
+      // Spacebar: Toggle Pick Tool (VectorDraw standard)
       if (e.code === 'Space' && !e.ctrlKey && !e.altKey) {
         e.preventDefault();
         if (activeTool !== 'pick') {
@@ -1129,7 +1129,7 @@ export default function App() {
           isDark={isDark}
         />
 
-        {/* Right CorelDRAW Vertical Color Palette */}
+        {/* Right VectorDraw Vertical Color Palette */}
         <ColorPalette
           onSetFill={handleSetFillColor}
           onSetOutline={handleSetOutlineColor}

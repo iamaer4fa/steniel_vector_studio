@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Check } from 'lucide-react';
-import { COREL_PALETTE } from '../utils/sampleData';
+import { VECTORDRAW_PALETTE } from '../utils/sampleData';
 
 interface FillModalProps {
   isOpen: boolean;
@@ -83,13 +83,13 @@ export const UniformFillModal: React.FC<FillModalProps> = ({
             </div>
           </div>
 
-          {/* Quick CorelDRAW Palette Swatches */}
+          {/* Quick VectorDraw Palette Swatches */}
           <div className="space-y-1.5">
             <div className="text-[11px] font-semibold text-neutral-500 uppercase">
-              Corel Palette Swatches
+              VectorDraw Palette Swatches
             </div>
             <div className="grid grid-cols-10 gap-1.5 p-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
-              {COREL_PALETTE.map((c, i) => (
+              {VECTORDRAW_PALETTE.map((c, i) => (
                 <button
                   key={i}
                   onClick={() => {

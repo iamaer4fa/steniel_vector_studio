@@ -30,7 +30,7 @@ import {
   SelectedNodeRef,
   ToolType,
   VectorObject,
-} from '../types/corel';
+} from '../types/vectordraw';
 
 interface PropertyBarProps {
   activeTool: ToolType;
@@ -93,7 +93,7 @@ export const PropertyBar: React.FC<PropertyBarProps> = ({
 }) => {
   const [aspectLocked, setAspectLocked] = React.useState(true);
 
-  // If Shape Tool is active and a curve is selected: render CorelDRAW's iconic Node Editing Bar!
+  // If Shape Tool is active and a curve is selected: render VectorDraw's iconic Node Editing Bar!
   if (activeTool === 'shape') {
     const isCurveObj = selectedObject?.type === 'curve';
     const curve = isCurveObj ? (selectedObject as CurveObject) : null;
@@ -316,7 +316,7 @@ export const PropertyBar: React.FC<PropertyBarProps> = ({
     );
   }
 
-  // If an object is selected: Render CorelDRAW's Object Transform & Appearance Property Bar!
+  // If an object is selected: Render VectorDraw's Object Transform & Appearance Property Bar!
   if (selectedObject) {
     const handleCoordChange = (field: 'x' | 'y' | 'width' | 'height', val: number) => {
       if (selectedObject.type === 'rectangle') {
@@ -417,7 +417,7 @@ export const PropertyBar: React.FC<PropertyBarProps> = ({
 
         <div className="w-[1px] h-4 bg-neutral-300 dark:bg-neutral-700 mx-1" />
 
-        {/* Outline Width dropdown (CorelDRAW standard) */}
+        {/* Outline Width dropdown (VectorDraw standard) */}
         <div className="flex items-center gap-1.5">
           <span className="text-neutral-500 text-[11px]">Outline:</span>
           <select

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Point, SelectedNodeRef, VectorObject } from '../types/corel';
+import { Point, SelectedNodeRef, VectorObject } from '../types/vectordraw';
 import { getObjectBoundingBox } from '../utils/bezier';
 
 interface StatusBarProps {
@@ -77,7 +77,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({
         <span>{Math.round(zoom * 100)}%</span>
       </div>
 
-      {/* Right: Fill & Outline indicators with double-click edit (CorelDRAW standard) */}
+      {/* Right: Fill & Outline indicators with double-click edit (VectorDraw standard) */}
       <div className="flex items-center gap-2 font-sans text-[11px]">
         {/* Fill chip */}
         <button

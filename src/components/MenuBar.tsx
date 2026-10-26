@@ -22,7 +22,7 @@ import {
   Maximize,
   Compass,
 } from 'lucide-react';
-import { PageConfig, VectorObject } from '../types/corel';
+import { PageConfig, VectorObject } from '../types/vectordraw';
 
 interface MenuBarProps {
   onNew: () => void;
@@ -131,7 +131,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
         <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
-        <span className="text-[13px] text-neutral-900 dark:text-white">CorelDRAW</span>
+        <span className="text-[13px] text-neutral-900 dark:text-white">VectorDraw</span>
         <span className="text-[10px] uppercase font-mono px-1 py-0.2 bg-emerald-600/15 text-emerald-600 dark:text-emerald-400 rounded">Vector</span>
       </div>
 
@@ -416,7 +416,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
                 <span className="text-neutral-400 font-mono text-[11px]">Shift+PgDn</span>
               </button>
               <div className="my-1 border-t border-neutral-200 dark:border-neutral-800" />
-              <div className="px-3 py-1 text-[10px] font-semibold tracking-wider uppercase text-neutral-400">Align (Corel Shortcuts)</div>
+              <div className="px-3 py-1 text-[10px] font-semibold tracking-wider uppercase text-neutral-400">Align (VectorDraw Shortcuts)</div>
               <button
                 onClick={() => handleAction(() => onAlign('page'))}
                 disabled={!hasSelection}
@@ -498,7 +498,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
                 onClick={() => handleAction(onToggleShortcuts)}
                 className="w-full flex items-center justify-between px-3 py-1.5 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-left"
               >
-                <span className="flex items-center gap-2"><HelpCircle className="w-3.5 h-3.5" /> CorelDRAW Shortcuts</span>
+                <span className="flex items-center gap-2"><HelpCircle className="w-3.5 h-3.5" /> VectorDraw Shortcuts</span>
                 <span className="text-neutral-400 font-mono text-[11px]">F1</span>
               </button>
             </div>
@@ -513,7 +513,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
         <button
           onClick={onToggleShortcuts}
           className="flex items-center gap-1 px-2 py-0.5 rounded text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
-          title="CorelDRAW Shortcuts (F1)"
+          title="VectorDraw Shortcuts (F1)"
         >
           <HelpCircle className="w-3.5 h-3.5 text-emerald-600" />
           <span className="text-[11px]">Shortcuts</span>
