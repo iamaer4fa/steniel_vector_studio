@@ -41,7 +41,8 @@ export function exportToSvgString(objects: VectorObject[], pageConfig: PageConfi
       }
       svg += `  <polygon id="${obj.id}" points="${pts.join(' ')}" ${fillAttr} ${strokeAttr} ${opacityAttr} class="vector-obj" />\n`;
     } else if (obj.type === 'text') {
-      svg += `  <text id="${obj.id}" x="${obj.x}" y="${obj.y}" font-family="${obj.fontFamily}" font-size="${obj.fontSize}" font-weight="${obj.fontWeight}" font-style="${obj.fontStyle}" ${fillAttr} ${strokeAttr} ${opacityAttr}>${obj.text}</text>\n`;
+      const anchor = obj.textAlign === 'center' ? 'middle' : obj.textAlign === 'right' ? 'end' : 'start';
+      svg += `  <text id="${obj.id}" x="${obj.x}" y="${obj.y}" font-family="${obj.fontFamily}" font-size="${obj.fontSize}" font-weight="${obj.fontWeight}" font-style="${obj.fontStyle}" text-anchor="${anchor}" ${fillAttr} ${strokeAttr} ${opacityAttr}>${obj.text}</text>\n`;
     }
   }
 

@@ -62,7 +62,6 @@ export const ColorPalette: React.FC<ColorPaletteProps> = ({
                 style={{
                   backgroundColor: isNone ? '#ffffff' : color.hex,
                 }}
-                title={`${color.name}\n• Left-click: Set Fill\n• Right-click: Set Outline`}
               >
                 {isNone && (
                   <svg className="w-full h-full text-red-500" viewBox="0 0 20 20">

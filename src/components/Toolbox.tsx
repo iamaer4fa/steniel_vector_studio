@@ -127,7 +127,6 @@ export const Toolbox: React.FC<ToolboxProps> = ({
                     : 'bg-white text-black shadow-xs ring-1 ring-emerald-500/50'
                   : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800'
               }`}
-              title={`${tool.name} (${tool.shortcut})`}
             >
               {tool.icon}
               {/* VectorDraw tiny corner arrow for flyout indicator */}

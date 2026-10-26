@@ -22,6 +22,12 @@ import {
   ChevronsRight,
   MoveHorizontal,
   MoveVertical,
+  Type,
+  Bold,
+  Italic,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
 } from 'lucide-react';
 import {
   CurveNode,
@@ -316,6 +322,24 @@ export const PropertyBar: React.FC<PropertyBarProps> = ({
     );
   }
 
+  // Text (F8) tool active without selection
+  if (activeTool === 'text' && !selectedObject) {
+    return (
+      <div className={`flex items-center h-9 px-3 gap-3 border-b select-none text-xs ${
+        isDark ? 'bg-neutral-900 border-neutral-800 text-neutral-200' : 'bg-neutral-100 border-neutral-200 text-neutral-800'
+      }`}>
+        <span className="font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+          <Type className="w-4 h-4" />
+          <span>Text Tool (F8)</span>
+        </span>
+        <div className="w-[1px] h-4 bg-neutral-300 dark:bg-neutral-700" />
+        <span className="text-[11px] text-neutral-500 italic">
+          Click anywhere on canvas to place and edit text
+        </span>
+      </div>
+    );
+  }
+
   // If an object is selected: Render VectorDraw's Object Transform & Appearance Property Bar!
   if (selectedObject) {
     const handleCoordChange = (field: 'x' | 'y' | 'width' | 'height', val: number) => {
@@ -555,6 +579,133 @@ export const PropertyBar: React.FC<PropertyBarProps> = ({
                 />
               </>
             )}
+          </div>
+        )}
+
+        {/* Text specific controls */}
+        {selectedObject.type === 'text' && (
+          <div className="flex items-center gap-2 pl-2 border-l border-neutral-300 dark:border-neutral-700">
+            {/* Quick text content edit */}
+            <input
+              type="text"
+              value={selectedObject.text}
+              onChange={(e) => onObjectChange({ ...selectedObject, text: e.target.value })}
+              className={`w-36 h-6 px-2 text-xs rounded border ${
+                isDark ? 'bg-neutral-800 border-neutral-700 text-white' : 'bg-white border-neutral-300'
+              }`}
+              placeholder="Text content..."
+              title="Edit Text String"
+            />
+
+            {/* Font Family */}
+            <select
+              value={selectedObject.fontFamily}
+              onChange={(e) => onObjectChange({ ...selectedObject, fontFamily: e.target.value })}
+              className={`h-6 px-1.5 text-xs rounded border ${
+                isDark ? 'bg-neutral-800 border-neutral-700 text-white' : 'bg-white border-neutral-300'
+              }`}
+              title="Font Family"
+            >
+              <option value="DM Sans">DM Sans</option>
+              <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Helvetica, sans-serif">Helvetica</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
+              <option value="'Courier New', monospace">Courier New</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="Impact, sans-serif">Impact</option>
+              <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+            </select>
+
+            {/* Font Size */}
+            <div className="flex items-center gap-1">
+              <input
+                type="number"
+                min="6"
+                max="256"
+                value={selectedObject.fontSize}
+                onChange={(e) => onObjectChange({ ...selectedObject, fontSize: Math.max(6, Number(e.target.value)) })}
+                className={`w-14 h-6 px-1 text-center font-mono text-[11px] rounded border ${
+                  isDark ? 'bg-neutral-800 border-neutral-700 text-white' : 'bg-white border-neutral-300'
+                }`}
+                title="Font Size (pt)"
+              />
+              <span className="text-[10px] text-neutral-400">pt</span>
+            </div>
+
+            {/* Bold & Italic */}
+            <div className="flex items-center border border-neutral-300 dark:border-neutral-700 rounded bg-white dark:bg-neutral-800 p-0.5">
+              <button
+                onClick={() =>
+                  onObjectChange({
+                    ...selectedObject,
+                    fontWeight: selectedObject.fontWeight === 'bold' ? 'normal' : 'bold',
+                  })
+                }
+                className={`p-1 rounded transition-colors ${
+                  selectedObject.fontWeight === 'bold'
+                    ? 'bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white font-bold'
+                    : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                }`}
+                title="Bold"
+              >
+                <Bold className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() =>
+                  onObjectChange({
+                    ...selectedObject,
+                    fontStyle: selectedObject.fontStyle === 'italic' ? 'normal' : 'italic',
+                  })
+                }
+                className={`p-1 rounded transition-colors ${
+                  selectedObject.fontStyle === 'italic'
+                    ? 'bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white'
+                    : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                }`}
+                title="Italic"
+              >
+                <Italic className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Alignment */}
+            <div className="flex items-center border border-neutral-300 dark:border-neutral-700 rounded bg-white dark:bg-neutral-800 p-0.5">
+              <button
+                onClick={() => onObjectChange({ ...selectedObject, textAlign: 'left' })}
+                className={`p-1 rounded transition-colors ${
+                  selectedObject.textAlign === 'left'
+                    ? 'bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white'
+                    : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                }`}
+                title="Align Left"
+              >
+                <AlignLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => onObjectChange({ ...selectedObject, textAlign: 'center' })}
+                className={`p-1 rounded transition-colors ${
+                  selectedObject.textAlign === 'center'
+                    ? 'bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white'
+                    : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                }`}
+                title="Align Center"
+              >
+                <AlignCenter className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => onObjectChange({ ...selectedObject, textAlign: 'right' })}
+                className={`p-1 rounded transition-colors ${
+                  selectedObject.textAlign === 'right'
+                    ? 'bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white'
+                    : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                }`}
+                title="Align Right"
+              >
+                <AlignRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         )}
       </div>

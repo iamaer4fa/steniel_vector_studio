@@ -645,12 +645,19 @@ export function getObjectBoundingBox(obj: VectorObject): {
     };
   }
   if (obj.type === 'text') {
-    const estimatedWidth = (obj.text.length * obj.fontSize * 0.6);
+    const estimatedWidth = Math.max(obj.text.length * obj.fontSize * 0.6, 24);
+    const height = obj.fontSize * 1.3;
+    let startX = obj.x;
+    if (obj.textAlign === 'center') {
+      startX = obj.x - estimatedWidth / 2;
+    } else if (obj.textAlign === 'right') {
+      startX = obj.x - estimatedWidth;
+    }
     return {
-      x: obj.x,
-      y: obj.y - obj.fontSize,
-      width: Math.max(estimatedWidth, 40),
-      height: obj.fontSize * 1.3,
+      x: startX,
+      y: obj.y - obj.fontSize * 0.9,
+      width: estimatedWidth,
+      height,
     };
   }
 
